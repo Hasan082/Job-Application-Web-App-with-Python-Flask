@@ -2,18 +2,26 @@ from datetime import datetime
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
+from dotenv import load_dotenv
+from pathlib import Path
+import os
+
+# Load environment variables from .env file
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
 
 # Create Flask app
 app = Flask(__name__)
 
+
 # Configure Flask-SQLAlchemy
-app.config["SECRET_KEY"] = "jobAplication"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = "dr.has82@gmail.com"
-app.config["MAIL_PASSWORD"] = "wxvpiyopaayrwlhs"
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
+app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER")
+app.config["MAIL_PORT"] = int(os.getenv("MAIL_PORT"))
+app.config["MAIL_USE_SSL"] = os.getenv("MAIL_USE_SSL") == 'True'
+app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")
+app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
 db = SQLAlchemy(app)
 
 # Configure Flask-Mail
@@ -28,6 +36,7 @@ class formData(db.Model):
     email = db.Column(db.String(100), nullable=False)
     occupation = db.Column(db.String(50), nullable=False)
     date = db.Column(db.Date)
+
 
 # Define routes
 @app.route("/", methods=["GET", "POST"])
