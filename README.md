@@ -1,128 +1,83 @@
 # Job Application Web App with Python Flask
 
-This is a simple web application built using Flask that allows users to submit job applications. The application saves the submitted data to a SQLite database and sends a confirmation email to the applicant.
+This is a simple web application built with Flask for submitting job applications. Users can fill out a form with their personal details and submit it. The submitted data is saved in a SQLite database and an email notification is sent to the applicant.
 
 ## Features
 
-- Form submission for job applications
-- Data storage in a SQLite database
-- Sending confirmation emails using Flask-Mail
-
-## Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-- You have Python 3.x installed.
-- You have installed the required Python packages. (See Installation section)
+- Users can fill out a job application form with their personal details.
+- Submitted data is stored in a SQLite database.
+- Email notification is sent to the applicant after submitting the form.
 
 ## Installation
 
 1. **Clone the repository:**
 
-    ```bash
+    ```sh
     git clone <repository-url>
-    cd job-application-web-app
     ```
 
-2. **Create and activate a virtual environment:**
+2. **Navigate to the project directory:**
 
-    ```bash
-    python3 -m venv venv
+    ```sh
+    cd Job-Application-Web-App-with-Flask
+    ```
+
+3. **Create a virtual environment (optional but recommended):**
+
+    ```sh
+    python -m venv venv
+    ```
+
+4. **Activate the virtual environment:**
+
+    - On Windows:
+
+    ```sh
+    venv\Scripts\activate
+    ```
+
+    - On macOS and Linux:
+
+    ```sh
     source venv/bin/activate
     ```
 
-3. **Install the required packages:**
+5. **Install the dependencies:**
 
-    ```bash
-    pip install Flask Flask-SQLAlchemy Flask-Mail
+    ```sh
+    pip install -r requirements.txt
     ```
 
-## Configuration
+6. **Create a `.env` file in the project root directory and add the following environment variables:**
 
-1. **Configure your email settings:**
-
-    Open `app.py` and configure the email settings with your own email credentials:
-
-    ```python
-    app.config["MAIL_SERVER"] = "smtp.gmail.com"
-    app.config["MAIL_PORT"] = 465
-    app.config["MAIL_USE_SSL"] = True
-    app.config["MAIL_USERNAME"] = "your-email@gmail.com"
-    app.config["MAIL_PASSWORD"] = "your-app-password"
+    ```plaintext
+    SECRET_KEY=your_secret_key
+    SQLALCHEMY_DATABASE_URI=sqlite:///database.db
+    MAIL_SERVER=smtp.gmail.com
+    MAIL_PORT=465
+    MAIL_USE_SSL=True
+    MAIL_USERNAME=your_email@example.com
+    MAIL_PASSWORD=your_email_password
     ```
 
-    Make sure to use an app-specific password if two-factor authentication is enabled for your Gmail account.
+    Replace `your_secret_key`, `your_email@example.com`, and `your_email_password` with your own values.
 
-2. **Set the secret key:**
+7. **Run the Flask app:**
 
-    The secret key is used by Flask to encrypt session data. You can set it to any random string:
-
-    ```python
-    app.config["SECRET_KEY"] = "jobApplication"
-    ```
-
-## Running the Application
-
-1. **Initialize the database:**
-
-    Before running the application, you need to create the database. Run the following commands:
-
-    ```bash
-    export FLASK_APP=app
-    flask shell
-    from app import db
-    db.create_all()
-    exit()
-    ```
-
-2. **Run the application:**
-
-    ```bash
+    ```sh
     python app.py
     ```
 
-    The application will be accessible at `http://127.0.0.1:5000`.
-
-## Project Structure
-
-```
-job-application-web-app/
-│
-├── app.py                   # Main application file
-├── database.db              # SQLite database file (generated after running the app)
-├── templates/
-│   └── index.html           # HTML template for the job application form
-├── static/
-│   └── css/
-│       └── style.css        # Custom CSS file
-└── venv/                    # Virtual environment directory
-```
+8. **Access the web application in your browser at `http://127.0.0.1:5000`.**
 
 ## Usage
 
-1. Navigate to the application URL in your web browser.
-2. Fill in the job application form with the required details.
-3. Submit the form.
-4. You will receive a confirmation email containing the details of your application.
-
-## Error Handling
-
-- If there are any issues with sending the email, an error message will be displayed on the webpage.
-
-## Contributing
-
-If you want to contribute to this project, follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes and commit them (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a new Pull Request.
+- Open the web application in your browser.
+- Fill out the job application form with your details.
+- Click the submit button.
+- You will receive a confirmation message on the web page.
+- Check your email inbox for a confirmation email.
 
 ## License
 
-This project is open-source and available under the [MIT License](https://opensource.org/license/mit).
-
-## Contact
-
-If you have any questions, feel free to contact me at [dr.has82@gmail.com](mailto:dr.has82@gmail.com).
+This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/license/mit) file for details.
