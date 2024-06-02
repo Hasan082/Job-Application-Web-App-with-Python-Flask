@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -16,7 +16,6 @@ class formData(db.Model):
     email = db.Column(db.String(100), nullable=False)
     occupation = db.Column(db.String(50), nullable=False)
     date = db.Column(db.Date)
-    
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -29,6 +28,7 @@ def index():
         date = request.form.get("date")
         date_obj = datetime.strptime(date, "%Y-%m-%d")
         
+        # Process form data
         form = formData(
             first_name=first_name,
             last_name=last_name,
@@ -36,8 +36,17 @@ def index():
             occupation=occupation,
             date=date_obj,
         )
+
+        # Add form data to database
         db.session.add(form)
         db.session.commit()
+
+        # Show success message to user 
+        flash("Thank you for expressing interest in the position. We appreciate your application and will review it carefully. Expect to hear from us soon regarding the next steps in the hiring process.", "success")
+
+        # redirect to same page auto resubmit
+        return redirect(url_for("index"))
+
     return render_template("index.html")
 
 

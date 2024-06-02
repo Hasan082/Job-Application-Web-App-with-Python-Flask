@@ -56,6 +56,15 @@
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-outline-secondary px-5 py-3">Submit</button>
+                                {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <div class="alert alert-success mt-4" role="alert">
+                                                <p class="m-0">{{message}}</p>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
                             </div>
                         </form>
                     </div>
