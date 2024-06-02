@@ -4,46 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+    <title>Job Application Form</title>
 </head>
-    <body>
-        <h1>Job Application Form</h1>
-            <form>
-                <div>
-                    <label for="first_name">First Name:</label>
-                    <input type="text" id="first_name" name="first_name" required>
-                </div>
-                <div>
-                    <label for="last_name">Last Name:</label>
-                    <input type="text" id="last_name" name="last_name" required>
-                </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div>
-                    <label for="date">Available start date:</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
-                <div>
-                    <label>Current occupation: </label>
-                    <br>
-                    <div id="occupation">
-                        <input type="radio" id="employed" name="occupation" required>
-                        <label for="employed">Employed</label>
-
-                        <input type="radio" id="unemployed" name="occupation" required>
-                        <label for="unemployed">Unemployed</label>
-
-                        <input type="radio" id="self-employed" name="occupation" required>
-                        <label for="self-employed">Self-Employed</label>
-
-                        <input type="radio" id="student" name="occupation" required>
-                        <label for="student">Student</label>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1>Job Application Form</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="mb-3">
+                                <label for="first_name" class="form-label">First Name:</label>
+                                <input class="form-control" type="text" id="first_name" name="first_name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="last_name" class="form-label">Last Name:</label>
+                                <input class="form-control" type="text" id="last_name" name="last_name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input class="form-control" type="email" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="date" class="form-label">Available Start Date:</label>
+                                <input class="form-control" type="date" id="date" name="date" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Current Occupation:</label>
+                                <div id="occupation" class="form-check">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="employed" name="occupation" required>
+                                        <label class="form-check-label" for="employed">Employed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="unemployed" name="occupation" required>
+                                        <label class="form-check-label" for="unemployed">Unemployed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="self-employed" name="occupation" required>
+                                        <label class="form-check-label" for="self-employed">Self-Employed</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="student" name="occupation" required>
+                                        <label class="form-check-label" for="student">Student</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn submit-button ps-5 pe-5 pt-3 pb-3">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
