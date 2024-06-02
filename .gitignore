@@ -2,6 +2,7 @@ instance/*
 !instance/.gitignore
 .webassets-cache
 .env
+.venv
 
 .vscode/*
 !.vscode/settings.json
